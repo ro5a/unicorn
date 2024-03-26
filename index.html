@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unicorn</title>
+    <style>
+        *{
+            margin: 0%;
+            padding: 0%;
+        }
+        #loader {
+            display: none;
+            /* Add loader styles like width, height, animation, etc. */
+        }
+
+        #content {
+            display: block;
+        }
+
+        .loading #loader {
+            display: block;
+
+            transform-origin: 115px 115px;
+            background-position: center;
+            position: fixed;
+            z-index: 1000000;
+            left: 0;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            background-size: 300px;
+            background-color: #fff;
+            background-image: url(images/loader.gif);
+            background-repeat: no-repeat;
+            background-position: center;
+            animation: spin 1s linear infinite;
+        }
+
+        .loading #content {
+            display: none;
+        }
+
+        video {
+            width: 100%;
+            height: 100%;
+            background: #090909;
+
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="loader">
+        <!-- <img src="images/loader.gif" alt="Loading..."> -->
+    </div>
+    <div id="content">
+        <video width="400" autoplay muted>
+            <source src="images/animation.mp4" type="video/mp4">
+        </video>
+
+    </div>
+    <script>
+        window.addEventListener('load', function () {
+            var loader = document.getElementById('loader');
+            var content = document.getElementById('content');
+
+            // Add 'loading' class to the body to show the loader
+            document.body.classList.add('loading');
+
+            // Hide the loader and show the content after a delay (simulating loading time)
+            setTimeout(function () {
+                loader.style.display = 'none';
+                content.style.display = 'block';
+
+                // Remove 'loading' class from the body
+                document.body.classList.remove('loading');
+            }, 2000); // Set the desired delay time in milliseconds
+        });
+    </script>
+</body>
+
+</html>
